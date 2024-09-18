@@ -1,0 +1,13 @@
+{
+    "name": "Pilot Local Importer",
+    "author": "Licardo",
+    "author_uri": "https://space.bilibili.com/7403418",
+    "description": "Import Pilots and Heats from local file",
+    "info_uri": "https://github.com/L1cardo/RH-Pilot-Local-Importer/",
+    "license": "MIT",
+    "license_uri": "https://github.com/L1cardo/RH-Pilot-Local-Importer/blob/main/LICENSE",
+    "version": "1.0.0",
+    "required_rhapi_version": "1.2",
+    "update_uri": null,
+    "text_domain": null
+}
