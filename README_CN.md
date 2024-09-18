@@ -1,7 +1,7 @@
 #
 <p align="center">
 <h1 align="center">RotorHazard 飞手及分组导入器</h1>
-<h3 align="center">该插件可以让您在 Rotorhazard 中通过本地文件导入飞手及分组<br>
+<h3 align="center">该插件可以让您在 RotorHazard 中通过本地文件导入飞手及分组<br>
 <a href="./README.md">[English]</a><br>
 </h3>
 

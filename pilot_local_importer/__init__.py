@@ -34,17 +34,20 @@ def import_pilots(importer_class, rhapi, data, args):
             pilot_callsign = row[1]
             pilot_frequency = row[2]
             pilot_color = get_pilot_color(row[3])
-            pilot = {
-                "heat": pilot_heat,
-                "name": pilot_name,
-                "callsign": pilot_callsign,
-                "frequency": pilot_frequency,
-                "color": pilot_color,
-            }
+            if pilot_heat and pilot_name and pilot_callsign:
+                pilot = {
+                    "heat": pilot_heat,
+                    "name": pilot_name,
+                    "callsign": pilot_callsign,
+                    "frequency": pilot_frequency,
+                    "color": pilot_color,
+                }
 
             existing_pilot = check_existing_pilot(rhapi, pilot)
             if not existing_pilot:
-                rhapi.db.pilot_add(name=pilot["name"], callsign = pilot["callsign"], color=pilot["color"])
+                rhapi.db.pilot_add(
+                    name=pilot["name"], callsign=pilot["callsign"], color=pilot["color"]
+                )
                 logger.info(f"Pilot added: {pilot}")
             else:
                 logger.info(f"Pilot alredy exists: {pilot}")
@@ -102,7 +105,10 @@ def check_existing_pilot(rhapi, pilot):
     existing_pilots = rhapi.db.pilots
     existing = False
     for existing_pilot in existing_pilots:
-        if existing_pilot.name == pilot["name"] and existing_pilot.callsign == pilot["callsign"]:
+        if (
+            existing_pilot.name == pilot["name"]
+            and existing_pilot.callsign == pilot["callsign"]
+        ):
             existing = True
     return existing
 
@@ -119,7 +125,7 @@ def check_existing_class(rhapi, class_name):
 def get_pilot_id(rhapi, pilot):
     db_pilots = rhapi.db.pilots
     for db_pilot in db_pilots:
-        if db_pilot.name == pilot["name"]:
+        if db_pilot.name == pilot["name"] and db_pilot.callsign == pilot["callsign"]:
             return db_pilot.id
     return None
 
@@ -127,10 +133,9 @@ def get_pilot_id(rhapi, pilot):
 def get_pilot_color(color):
     pilot_color = "#FFFFFF"
 
-    if is_hex(color):
+    if is_hex_color(color):
         pilot_color = color
     else:
-
         if color in ("Blue", "蓝"):
             pilot_color = "#0022ff"
         elif color in ("Orange", "橙"):
@@ -151,10 +156,22 @@ def get_pilot_color(color):
     return pilot_color
 
 
-def is_hex(color):
-    if color.startswith("0x") or color.startswith("#"):
+def is_hex_color(color):
+    if color is None or not isinstance(color, str):
+        return False
+    if color.startswith("#"):
+        color = color[1:]
+        if len(color) not in (6, 8):
+            return False
+    elif color.startswith("0x"):
         color = color[2:]
-    return re.fullmatch(r"[0-9A-Fa-f]+", color) is not None
+        if len(color) not in (6, 8):
+            return False
+    else:
+        if len(color) not in (6, 8):
+            return False
+    hex_pattern = r"^[0-9A-Fa-f]+$"
+    return bool(re.match(hex_pattern, color))
 
 
 def register_handlers(args):
