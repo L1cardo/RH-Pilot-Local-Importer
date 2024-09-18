@@ -1,6 +1,9 @@
-# Pilot and Heats Import Plugin for RotorHazard
-
-This plugin allows you to import pilots and generate heats from a local file in RotorHazard.
+#
+<p align="center">
+<h1 align="center">Pilot and Heats Import Plugin for RotorHazard</h1>
+<h3 align="center">This plugin allows you to import pilots and generate heats from a local file in RotorHazard.<br>
+<a href="./README_CN.md">[中文]</a><br>
+</h3>
 
 ## Features
 
@@ -40,7 +43,7 @@ sudo systemctl restart rotorhazard.service
 
 - `Class Name`: Any Class Name you want, can not be the same as existed ones
 
-- `Heat`: Heat name, Pilots in the same heat MUST have the same Heat name
+- `Heat`: Heat name, Pilots that have the same Heat name will be placed in the same Heat
 
 - `Pilot`: Pilot name, Callsign will also use Pilot name
 
@@ -50,7 +53,7 @@ sudo systemctl restart rotorhazard.service
 
 2. Navigate to the "Data Management" panel in the Format page.
 
-3. Choose `Import Pilots and Heats` for Importer, and select your file 
+3. Choose `Import Pilots and Heats` for Importer, and select your Excel file 
 
 4. Click the "Import" button to start the import process.
 
