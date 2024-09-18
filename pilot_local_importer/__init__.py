@@ -52,7 +52,7 @@ def import_pilots(importer_class, rhapi, data, args):
             pilot_id = get_pilot_id(rhapi, pilot)
             heats[pilot_heat].append(pilot_id)
 
-    rhapi.ui.broadcast_pilots()
+    # rhapi.ui.broadcast_pilots()
     logger.info("Import Pilots complete")
 
     # Generate heats
@@ -88,8 +88,8 @@ def import_heats(rhapi, class_name, heats):
         )
         logger.info("Race Class, Pilots and Heats imported successfully")
 
-        rhapi.ui.broadcast_raceclasses()
-        rhapi.ui.broadcast_heats()
+        # rhapi.ui.broadcast_raceclasses()
+        # rhapi.ui.broadcast_heats()
 
     else:
         rhapi.ui.message_alert(
