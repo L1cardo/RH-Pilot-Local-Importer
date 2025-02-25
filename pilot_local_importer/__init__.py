@@ -31,14 +31,16 @@ def import_pilots(importer_class, rhapi, data, args):
         elif index != 1:
             pilot_heat = row[0]
             pilot_name = row[1]
-            pilot_callsign = row[1]
-            pilot_frequency = row[2]
-            pilot_color = get_pilot_color(row[3])
+            pilot_callsign = row[2]
+            pilot_team = row[3]
+            pilot_frequency = row[4]
+            pilot_color = get_pilot_color(row[5])
             if pilot_heat and pilot_name and pilot_callsign:
                 pilot = {
                     "heat": pilot_heat,
                     "name": pilot_name,
                     "callsign": pilot_callsign,
+                    "team": pilot_team,
                     "frequency": pilot_frequency,
                     "color": pilot_color,
                 }
@@ -46,7 +48,7 @@ def import_pilots(importer_class, rhapi, data, args):
             existing_pilot = check_existing_pilot(rhapi, pilot)
             if not existing_pilot:
                 rhapi.db.pilot_add(
-                    name=pilot["name"], callsign=pilot["callsign"], color=pilot["color"]
+                    name=pilot["name"], callsign=pilot["callsign"], team=pilot["team"], color=pilot["color"]
                 )
                 logger.info(f"Pilot added: {pilot}")
             else:

@@ -2,7 +2,7 @@
 <p align="center">
 <h1 align="center">RotorHazard 飞手及分组导入器</h1>
 <h3 align="center">该插件可以让您在 RotorHazard 中通过本地文件导入飞手及分组<br>
-<a href="./README.md">[English]</a><br>
+<a href="./README.md">[🇺🇸English]</a><br>
 </h3>
 
 ## 特点
@@ -39,13 +39,19 @@ sudo systemctl restart rotorhazard.service
 
 1. 创建一个 Excel 文件并 **严格** 遵守以下格式:
 
-![](sheet_cn.png)
+- 或者你可以在 [这里](/asset/模板.xlsx) 下载模板文件
+
+![](/asset/sheet_cn.png)
 
 - `赛程名称`: 可以改为任何你想要的赛程名称，但是不能与已存在的赛程同名
 
 - `分组`: 分组名称, 拥有相同分组名称的飞手会被分配到相同分组
 
-- `飞手`: 飞手名称, 飞手昵称会将与飞手名称相同
+- `姓名`: 飞手名称
+
+- `呼号`: 飞手呼号 **必须** 唯一
+
+- `团队`: 飞手所归属的团队，**只** 支持 `A`-`Z` 的单字母，**必须** 为大写
 
 - `频率`: RotorHazard不能通过插件设定频率, 这一项仅仅为了方便查看
 
