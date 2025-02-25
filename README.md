@@ -39,7 +39,7 @@ sudo systemctl restart rotorhazard.service
 
 1. Create an Excel file that **MUST** follow the format below:
 
-- Or You can dowload a template file [here](/asset/template.xlsx)
+- Or You can dowload a template file [here](https://github.com/L1cardo/RH-Pilot-Local-Importer/raw/refs/heads/main/asset/template.xlsx)
 
 ![](/asset/sheet.png)
 
