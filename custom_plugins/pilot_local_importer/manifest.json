@@ -1,13 +1,11 @@
 {
+    "domain": "pilot_local_importer",
     "name": "Pilot Local Importer",
     "author": "Licardo",
-    "author_uri": "https://space.bilibili.com/7403418",
-    "description": "Import Pilots and Heats from local Excel file",
-    "info_uri": "https://github.com/L1cardo/RH-Pilot-Local-Importer/",
     "license": "MIT",
-    "license_uri": "https://github.com/L1cardo/RH-Pilot-Local-Importer/blob/main/LICENSE",
-    "version": "1.1.0",
+    "description": "Import Pilots and Heats from local Excel file",
+    "documentation_uri": "https://github.com/L1cardo/RH-Pilot-Local-Importer",
     "required_rhapi_version": "1.0",
-    "update_uri": null,
-    "text_domain": null
+    "version": "1.1.0",
+    "category": ["Data Management"]
 }
