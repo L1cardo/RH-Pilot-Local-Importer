@@ -2,8 +2,14 @@
 <p align="center">
 <h1 align="center">RotorHazard 飞手及分组导入器</h1>
 <h3 align="center">该插件可以让您在 RotorHazard 中通过本地文件导入飞手及分组<br>
-<a href="./README.md">[🇺🇸English]</a><br>
+  <a href="./README.md">[🇺🇸English]</a><br>
 </h3>
+
+<p align="center">
+  <a href="https://github.com/L1cardo/RH-Pilot-Local-Importer/actions/workflows/rhfest.yml">
+    <img src="https://github.com/L1cardo/RH-Pilot-Local-Importer/actions/workflows/rhfest.yml/badge.svg" alt="RHFest">
+  </a>
+</p>
 
 ## 特点
 
