@@ -1,9 +1,14 @@
 #
-<p align="center">
 <h1 align="center">Pilot and Heats Import Plugin for RotorHazard</h1>
 <h3 align="center">This plugin allows you to import pilots and generate heats from a local file in RotorHazard.<br>
-<a href="./README_CN.md">[🇨🇳中文]</a><br>
+  <a href="./README_CN.md">[🇨🇳中文]</a><br>
 </h3>
+
+<p align="center">
+  <a href="https://github.com/L1cardo/RH-Pilot-Local-Importer/actions/workflows/rhfest.yml">
+    <img src="https://github.com/L1cardo/RH-Pilot-Local-Importer/actions/workflows/rhfest.yml/badge.svg" alt="RHFest">
+  </a>
+</p>
 
 ## Features
 
