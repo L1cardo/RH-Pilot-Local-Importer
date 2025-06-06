@@ -8,8 +8,7 @@
     "description": "Import Pilots and Heats from local Excel file",
     "documentation_uri": "https://github.com/L1cardo/RH-Pilot-Local-Importer",
     "required_rhapi_version": "1.0",
-    "version": "1.1.1",
-    "category": ["Race Management"],
+    "version": "1.1.2",
     "dependencies": ["openpyxl"],
     "zip_filename": "pilot_local_importer.zip"
 }

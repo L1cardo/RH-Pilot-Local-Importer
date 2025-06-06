@@ -1,3 +1,7 @@
+# Created by https://www.toptal.com/developers/gitignore/api/macos,python
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,python
+
+### macOS ###
 # General
 .DS_Store
 .AppleDouble
@@ -26,6 +30,11 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+### macOS Patch ###
+# iCloud generated files
+*.icloud
+
+### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -140,7 +149,7 @@ ipython_config.py
 #pdm.lock
 #   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
 #   in version control.
-#   https://pdm.fming.dev/latest/usage/project/#working-with-version-control
+#   https://pdm.fming.dev/#use-with-ide
 .pdm.toml
 .pdm-python
 .pdm-build/
@@ -197,9 +206,14 @@ cython_debug/
 
 # Ruff stuff:
 .ruff_cache/
+### Python Patch ###
+# Poetry local configuration file - https://python-poetry.org/docs/configuration/#local-configuration
+poetry.toml
 
 # PyPI configuration file
 .pypirc
+# ruff
+.ruff_cache/
 
 .vscode/*
 !.vscode/settings.json
@@ -207,9 +221,18 @@ cython_debug/
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/*.code-snippets
+# LSP config files
+pyrightconfig.json
 
 # Local History for Visual Studio Code
 .history/
-
 # Built Visual Studio Code Extensions
 *.vsix
+# End of https://www.toptal.com/developers/gitignore/api/macos,python
+
+# Rotorhazard Plugins
+rh_*/
+event_actions_udp/
+default_settings.db
+default_settings.old
+settings.txt
