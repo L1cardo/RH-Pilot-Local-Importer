@@ -42,9 +42,7 @@ sudo systemctl restart rotorhazard.service
 
 ## Usage
 
-1. Create an Excel file that **MUST** follow the format below:
-
-- Or You can dowload a template file [here](https://github.com/L1cardo/RH-Pilot-Local-Importer/raw/refs/heads/main/asset/template.xlsx)
+1. Manually create an Excel file that **MUST** follow the format below, or download the template file "Template-Import Pilots and Heats" from "Data Management - Exporter":
 
 ![](/asset/sheet.png)
 

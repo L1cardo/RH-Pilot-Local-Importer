@@ -1,7 +1,9 @@
 import logging
 import re
+import os
 from eventmanager import Evt
 from data_import import DataImporter
+from data_export import DataExporter
 from Database import ProgramMethod
 from io import BytesIO
 from openpyxl import load_workbook
@@ -48,7 +50,10 @@ def import_pilots(importer_class, rhapi, data, args):
             existing_pilot = check_existing_pilot(rhapi, pilot)
             if not existing_pilot:
                 rhapi.db.pilot_add(
-                    name=pilot["name"], callsign=pilot["callsign"], team=pilot["team"], color=pilot["color"]
+                    name=pilot["name"],
+                    callsign=pilot["callsign"],
+                    team=pilot["team"],
+                    color=pilot["color"],
                 )
                 logger.info(f"Pilot added: {pilot}")
             else:
@@ -176,14 +181,72 @@ def is_hex_color(color):
     return bool(re.match(hex_pattern, color))
 
 
-def register_handlers(args):
-    args["register_fn"](
-        DataImporter(
-            "Import Pilots and Heats",
-            import_pilots,
-        )
-    )
+def assemble_template_en(rhapi):
+    template_path = os.path.join(os.path.dirname(__file__), "template", "template.xlsx")
+    return template_path
+
+
+def assemble_template_cn(rhapi):
+    template_path = os.path.join(os.path.dirname(__file__), "template", "模板.xlsx")
+    return template_path
+
+
+def write_template_file_en(template_path):
+    try:
+        with open(template_path, "rb") as f:
+            file_data = f.read()
+        logger.info("Exporting template file for [Import Pilots and Heats]")
+        return {
+            "data": file_data,
+            "ext": "xlsx",
+            "filename": "template.xlsx",
+            "encoding": "binary",
+        }
+    except Exception as e:
+        logger.error("Error reading template file: {}".format(str(e)))
+        return None
+
+
+def write_template_file_cn(template_path):
+    try:
+        with open(template_path, "rb") as f:
+            file_data = f.read()
+        logger.info("正在导出 [导入飞手及分组-Licardo] 的模板文件")
+        return {
+            "data": file_data,
+            "ext": "xlsx",
+            "filename": "模板.xlsx",
+            "encoding": "binary",
+        }
+    except Exception as e:
+        logger.error("Error reading template file: {}".format(str(e)))
+        return None
+
+
+def register_importer_handlers(args):
+    for importer in [
+        DataImporter("Import Pilots and Heats", import_pilots),
+        DataImporter("导入飞手及分组-Licardo", import_pilots),
+    ]:
+        args["register_fn"](importer)
+
+
+def register_exporter_handlers(args):
+    for exporter in [
+        DataExporter(
+            "Template-Import Pilots and Heats",
+            write_template_file_en,
+            assemble_template_en,
+        ),
+        DataExporter(
+            "模板-导入飞手及分组-Licardo",
+            write_template_file_cn,
+            assemble_template_cn,
+        ),
+    ]:
+        args["register_fn"](exporter)
 
 
 def initialize(rhapi):
-    rhapi.events.on(Evt.DATA_IMPORT_INITIALIZE, register_handlers)
+    rhapi.events.on(Evt.DATA_IMPORT_INITIALIZE, register_importer_handlers)
+    rhapi.events.on(Evt.DATA_EXPORT_INITIALIZE, register_exporter_handlers)

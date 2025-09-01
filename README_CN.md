@@ -43,9 +43,7 @@ sudo systemctl restart rotorhazard.service
 
 ## 使用方法
 
-1. 创建一个 Excel 文件并 **严格** 遵守以下格式:
-
-- 或者你可以在 [这里](https://github.com/L1cardo/RH-Pilot-Local-Importer/raw/refs/heads/main/asset/模板.xlsx) 下载模板文件
+1. 手动创建一个 Excel 文件并 **严格** 遵守以下格式，或者在 "数据管理-导出器" 中选择 "模板-导入飞手及分组-Licardo":
 
 ![](/asset/sheet_cn.png)
 
