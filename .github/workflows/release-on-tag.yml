@@ -32,7 +32,7 @@ jobs:
 
       - name: Get Previous tag
         id: previoustag
-        uses: amitsingh-007/next-release-tag@v6
+        uses: amitsingh-007/next-release-tag@v6.3.0
 
       - name: 📝 Create Release
         uses: softprops/action-gh-release@v2
