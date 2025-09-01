@@ -27,8 +27,7 @@ jobs:
 
       - name: 📦 Create ZIP archive
         run: |
-          cd custom_plugins/pilot_local_importer
-          zip -r ../pilot_local_importer.zip .
+          zip -r pilot_local_importer.zip custom_plugins/pilot_local_importer
 
       - name: 📝 Create Release
         uses: softprops/action-gh-release@v2
@@ -41,5 +40,4 @@ jobs:
             **Full Changelog**: https://github.com/L1cardo/RH-Pilot-Local-Importer/compare/${{ github.event.previous_tag }}...${{ github.ref_name }}
           draft: false
           prerelease: false
-          files: |
-            ./pilot_local_importer.zip
+          files: pilot_local_importer.zip
