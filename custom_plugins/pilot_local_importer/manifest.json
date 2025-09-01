@@ -8,7 +8,7 @@
     "description": "Import Pilots and Heats from local Excel file",
     "documentation_uri": "https://github.com/L1cardo/RH-Pilot-Local-Importer",
     "required_rhapi_version": "1.0",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "dependencies": ["openpyxl"],
     "zip_filename": "pilot_local_importer.zip"
 }
