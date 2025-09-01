@@ -29,7 +29,11 @@ jobs:
 
       - name: 📦 Create ZIP archive
         run: |
-          zip -r pilot_local_importer.zip custom_plugins/pilot_local_importer
+          zip -r pilot_local_importer.zip custom_plugins/pilot_local_importer/*
+
+      - name: Get Previous tag
+        id: previoustag
+        uses: WyriHaximus/github-action-get-previous-tag@v1
 
       - name: 📝 Create Release
         uses: softprops/action-gh-release@v2
@@ -39,7 +43,7 @@ jobs:
           body: |
             ${{ github.event.head_commit.message }}
 
-            **Full Changelog**: https://github.com/L1cardo/RH-Pilot-Local-Importer/compare/${{ github.event.previous_tag }}...${{ github.ref_name }}
+            **Full Changelog**: https://github.com/L1cardo/RH-Pilot-Local-Importer/compare/${{ steps.previoustag.outputs.tag }}...${{ github.ref_name }}
           draft: false
           prerelease: false
           files: pilot_local_importer.zip
