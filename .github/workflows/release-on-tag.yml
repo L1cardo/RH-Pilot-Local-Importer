@@ -40,5 +40,4 @@ jobs:
             **Full Changelog**: https://github.com/L1cardo/RH-Pilot-Local-Importer/compare/${{ github.event.previous_tag }}...${{ github.ref_name }}
           draft: false
           prerelease: false
-          token: ${{ secrets.GITHUB_TOKEN }}
           files: pilot_local_importer.zip
