@@ -9,5 +9,6 @@
     "documentation_uri": "https://github.com/L1cardo/RH-Pilot-Local-Importer",
     "required_rhapi_version": "1.0",
     "version": "1.2.0",
-    "dependencies": ["openpyxl"]
+    "dependencies": ["openpyxl"],
+    "zip_filename": "pilot_local_importer.zip"
 }
