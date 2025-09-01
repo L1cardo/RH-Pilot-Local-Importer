@@ -28,7 +28,7 @@ jobs:
 
       - name: 📦 Create ZIP archive
         run: |
-          zip -r pilot_local_importer.zip custom_plugins/pilot_local_importer/*
+          cd custom_plugins && zip -r ../pilot_local_importer.zip pilot_local_importer
 
       - name: Get Previous tag
         id: previoustag
