@@ -1,0 +1,45 @@
+name: Release on Tag
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Validate with RHFest
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v5
+
+      - name: 🚀 Run RHFest validation
+        uses: docker://ghcr.io/rotorhazard/rhfest-action:latest
+
+  release:
+    name: Create Release
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v5
+
+      - name: 📦 Create ZIP archive
+        run: |
+          cd custom_plugins/pilot_local_importer
+          zip -r ../pilot_local_importer.zip .
+
+      - name: 📝 Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          body: |
+            ${{ github.event.head_commit.message }}
+
+            **Full Changelog**: https://github.com/L1cardo/RH-Pilot-Local-Importer/compare/${{ github.event.previous_tag }}...${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          files: |
+            ./pilot_local_importer.zip
